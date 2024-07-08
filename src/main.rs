@@ -69,9 +69,13 @@ impl Game {
                 mvaddch(y as i32, x as i32, tile as u32);
             }
         }
+        attron(COLOR_PAIR(2));
         mvaddch(self.player_y, self.player_x, PLAYER as u32);
+        attroff(COLOR_PAIR(2));
         for &(mx, my) in &self.monsters {
+            attron(COLOR_PAIR(1));
             mvaddch(my, mx, MONSTER as u32);
+            attroff(COLOR_PAIR(1));
         }
         refresh();
     }
@@ -115,10 +119,12 @@ fn main() {
         start_color();
         init_pair(1, COLOR_RED, COLOR_BLACK);
         init_pair(2, COLOR_GREEN, COLOR_BLACK);
+        init_pair(3, COLOR_WHITE, COLOR_BLACK);
     }
 
     // Set color for map
-    attron(COLOR_PAIR(2));
+    //attron(COLOR_PAIR(2));
+    attron(COLOR_PAIR(3));
 
     let mut game = Game::new(80, 24);
 
