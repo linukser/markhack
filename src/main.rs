@@ -123,7 +123,6 @@ fn main() {
     }
 
     // Set color for map
-    //attron(COLOR_PAIR(2));
     attron(COLOR_PAIR(3));
 
     let mut game = Game::new(80, 24);
